@@ -105,7 +105,34 @@ add_action( 'widgets_init', 'aj_widgets_init' );
  * Enqueue scripts and styles.
  */
 function aj_scripts() {
+
+	wp_enqueue_style( 'aj-montserrat', get_template_directory_uri() . '/css/montserrat.css', array(), '1.0.1', 'all' );
+
+	wp_enqueue_style( 'aj-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0.2', 'all' );
+
+	wp_enqueue_style( 'aj-eleganticons', get_template_directory_uri() . '/css/eleganticons.min.css', array(), '1.0.3', 'all' );
+
+	wp_enqueue_style( 'aj-plugins', get_template_directory_uri() . '/css/plugins.css', array(), '1.0.3', 'all' );
+
 	wp_enqueue_style( 'aj-style', get_stylesheet_uri() );
+
+
+
+
+	wp_enqueue_script( 'aj-modernizr', get_template_directory_uri() . '/js/vendor/modernizr-2.8.3.min.js', array(), '2.0.1', false );
+
+
+	wp_enqueue_script( 'aj-bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '2.0.1', true );
+
+	wp_enqueue_script( 'aj-plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery'), '2.0.2', true );
+
+	wp_enqueue_script( 'aj-ajax-mail', get_template_directory_uri() . '/js/ajax-mail.js', array('jquery'), '2.0.3', true );
+
+	wp_enqueue_script( 'aj-map-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAdWLY_Y6FL7QGW5vcO3zajUEsrKfQPNzI', array('jquery'), '2.0.4', true );
+
+	wp_enqueue_script( 'aj-map', get_template_directory_uri() . '/js/map.js', array('jquery'), '2.0.5', true );
+
+	wp_enqueue_script( 'aj-main', get_template_directory_uri() . '/js/main.js', array('jquery'), '2.0.6', true );
 
 	wp_enqueue_script( 'aj-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
