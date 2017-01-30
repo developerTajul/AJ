@@ -1,0 +1,71 @@
+/*----------------------------------------*/
+/*  6.  Work Area
+/*----------------------------------------*/
+.work-area {}
+.row-5 {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+/*-- Work Filter --*/
+.works-filter {
+    margin-bottom: 30px;
+    & button {
+        font-size: 12px;
+        line-height: 10px;
+        color: $text-color-light;
+        padding: 0 7px;
+        position: relative;
+        border: none;
+        background-color: transparent;
+        text-transform: uppercase;
+        vertical-align: top;
+        margin: 0 4px 5px;
+        &::before {
+            position: absolute;
+            height: 1px;
+            left: 0;
+            right: 0;
+            content: "";
+            top: 50%;
+            background-color: $text-color-light;
+            @include transform(scale(0));
+        }
+        &.active::before {
+            @include transform(scale(1));
+        }
+        &:hover::before {
+            @include transform(scale(1));
+        }
+    }
+}
+/*-- Work Grid --*/
+.works-grid {
+    display: block;
+    float: left;
+    width: 100%;
+    & .works-item {
+        padding: 0 5px;
+        margin-bottom: 10px;
+        & a {
+            cursor: url(img/work/plus.png), auto;
+            display: block;
+            position: relative;
+            &::before {
+                background-color: #fafafa;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                content: "";
+                opacity: 0;
+            }
+            &:hover::before {
+                opacity: 0.9;
+            }
+            & img {
+                width: 100%;
+            }
+        }
+    }
+}

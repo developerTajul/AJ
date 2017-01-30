@@ -1,0 +1,61 @@
+/*----------------------------------------*/
+/*  8.  Blog Area
+/*----------------------------------------*/
+.blog-area {}
+.blog-wrapper {
+    padding: 0 35px;
+    display: block;
+    float: left;
+    width: 100%;
+    @media #{$large-mobile}{
+        padding: 0;
+    }
+}
+/*-- Blog Item --*/
+.blog-item {
+    padding: 27px 34px 32px;
+    background-color: #f5f5f5;
+    & .title {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 26px;
+        margin-bottom: 5px;
+        @media #{$small-mobile}{
+            font-size: 16px;
+            line-height: 24px;
+        }
+        & a {
+            color: $text-color;
+            &:hover {
+                color: $theme-color;
+            }
+        }
+    }
+    & .date {
+        font-size: 12px;
+        font-weight: 300;
+        color: $text-color-light;
+        display: block;
+        line-height: 10px;
+        margin-bottom: 15px;
+    }
+    & p {
+        font-weight: 300;
+        color: $text-color-light;
+        margin-bottom: 15px;
+    }
+    & .read-more {
+        font-size: 12px;
+        font-weight: 300;
+        color: $text-color-light;
+        display: inline-block;
+        line-height: 10px;
+        text-transform: uppercase;
+        padding-bottom: 6px;
+        border-bottom: 1px solid $text-color-light;
+        &:hover {
+            border-color: $theme-color;
+            color: $theme-color;
+        }
+    }
+}
