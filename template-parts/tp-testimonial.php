@@ -6,25 +6,22 @@
                
                 <!-- Testimonial Slider Start -->
                 <div class="testimonial-slider text-center">
-                    
-                    <!-- Single Testimonial -->
-                    <div class="testimonial-item">
-                        <h3>Marie Keller</h3>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the mor</p>
+                <?php 
+                $q = new WP_Query(array(
+                    'post_type' => 'aj_testimonials',
+                    'posts_per_page'    => -1,
+                    'orderby'           => 'menu-order',
+                    'order'             => 'ASC'
+                ));
+
+                While( $q->have_posts() ):$q->the_post();
+                ?>
+
+                     <div class="testimonial-item">
+                        <h3><?php the_title(); ?></h3>
+                        <?php the_content(); ?>
                     </div>
-                   
-                    <!-- Single Testimonial -->
-                    <div class="testimonial-item">
-                        <h3>Jhon Doe</h3>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the mor</p>
-                    </div>
-                   
-                    <!-- Single Testimonial -->
-                    <div class="testimonial-item">
-                        <h3>Jane Doe</h3>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the mor</p>
-                    </div>
-                    
+                <?php endwhile; ?>    
                 </div>
                 <!-- Testimonial Slider End -->
                 

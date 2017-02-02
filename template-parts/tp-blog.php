@@ -10,26 +10,31 @@
         <div class="row">
            
             <div class="blog-wrapper">
+           <?php 
+                $q = new WP_Query(array(
+                    'post_type' => 'post',
+                    'posts_per_page'    => 2,
+                    'orderby'           => 'menu-order',
+                    'order'             => 'ASC'
+                ));
 
-                <!-- Blog Item -->
+                While( $q->have_posts() ):$q->the_post();
+                $full_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
+            ?>
+
                 <div class="col-md-6 col-xs-12 mb-30">
                     <div class="blog-item text-left">
-                        <h4 class="title"><a href="#">Including versions of Lorem Ipsum</a></h4>
-                        <span class="date">Date:07 oct 16</span>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply m text.It has roots in a piece of classical Latinaking.</p>
-                        <a href="#" class="read-more">READ MORE</a>
+                        <h4 class="title"><a href="#"><?php the_title(); ?></a></h4>
+                        <span class="date">Date: <?php the_time('d m y'); ?></span>
+                        <p><?php echo wp_trim_words(get_the_content(), '30', ''); ?></p>
+                        <a href="<?php the_permalink(); ?>" class="read-more">READ MORE</a>
                     </div>
                 </div>
 
-                <!-- Blog Item -->
-                <div class="col-md-6 col-xs-12 mb-30">
-                    <div class="blog-item text-left">
-                        <h4 class="title"><a href="#">Many desktop publishing packages and</a></h4>
-                        <span class="date">Date:07 oct 16</span>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply m text.It has roots in a piece of classical Latinaking.</p>
-                        <a href="#" class="read-more">READ MORE</a>
-                    </div>
-                </div>
+
+        <?php endwhile; ?>
+
+                
                 
             </div>
             

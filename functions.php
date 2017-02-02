@@ -67,6 +67,62 @@ function aj_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+
+
+	
+
+
+	/** 
+	*
+	*
+	* custom post type
+	*
+	*
+	*/
+
+	// testimonials
+	register_post_type('aj_testimonials', array(
+		'label'	=> 'Testimonials',
+		'labels'		=> array(
+				'name'	=> 'Testimonials',
+				'add_new'	=> 'Add New Testimonial',
+				'add_new_item'	=> 'Add New Testimonial'
+			),
+		'public'	=> true,
+		'menu_icon'	=> 'dashicons-money',
+		'supports'	=> array('title', 'editor')		
+	));
+
+
+	// portfolios
+	register_post_type('aj_portfolios', array(
+		'label'	=> 'Portfolios',
+		'labels'		=> array(
+				'name'	=> 'Portfolios',
+				'add_new'	=> 'Add New Portfolio',
+				'add_new_item'	=> 'Add New Portfolio'
+			),
+		'public'	=> true,
+		'menu_icon'	=> 'dashicons-schedule',
+		'supports'	=> array('title', 'thumbnail')		
+	));
+
+	register_taxonomy('aj_portfolios_cat', 'aj_portfolios', array(
+		'label'	=> 'Brands',
+		'labels'	=> array(
+				'name'	=> 'Brands',
+				'add_new'	=> 'Add New Brand',
+				'add_new_item'	=> 'Add New Brand',
+
+			),
+		'public'	=> true,
+		'hierarchical' => true
+	));
+
+
+
+
+
 }
 endif;
 add_action( 'after_setup_theme', 'aj_setup' );
@@ -168,3 +224,44 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+
+/**
+*
+* Shortcode
+*
+*/
+require get_template_directory() . '/inc/aj-shortcodes.php';
+
+
+/**
+*
+* Redux Framework
+*/
+require_once('libs/redux/ReduxCore/framework.php');
+
+require_once('libs/redux/sample/mt-redux.php');
+
+
+/**
+*
+*
+* Metabox
+*
+*/
+require_once('libs/metabox/init.php');
+// require_once('libs/metabox/example-functions.php');
+require_once('libs/metabox/custom-metabox.php');
+
+
+
+
+/**
+*
+*
+*
+*
+*/
+
+ require_once('libs/mce-button/mce-functions.php');

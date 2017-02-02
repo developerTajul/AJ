@@ -12,59 +12,56 @@
             <!-- Work Filter -->
             <div class="works-filter text-center">
                 <button class="active" data-filter="*">all</button>
-                <button data-filter=".web">web</button>
-                <button data-filter=".design">design</button>
-                <button data-filter=".development">development</button>
-                <button data-filter=".brand">brand</button>
+                <?php 
+                $terms = get_terms(aj_portfolios_cat);
+
+                foreach ( $terms as $term ) { ?>
+                    
+                     <button data-filter=".<?php echo $term->slug.' '; ?>"><?php echo $term->name; ?></button>
+                <?php }
+
+                ?>
             </div>
 
             <!-- Work Grid -->
             <div class="works-grid">
 
-                <!--Work Item-->
-                <div class="works-item web development col-md-3 col-sm-4 col-xs-12">
-                    <a href="img/work/1.jpg" class="gallery-popup"><img src="<?php echo get_template_directory_uri(); ?>/img/work/1.jpg" alt="" /></a>
+           <?php 
+                $q = new WP_Query(array(
+                    'post_type' => 'aj_portfolios',
+                    'posts_per_page'    => -1,
+                    'orderby'           => 'menu-order',
+                    'order'             => 'ASC'
+                ));
+
+                While( $q->have_posts() ):$q->the_post();
+                $full_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');
+            ?>
+
+                <div class="works-item
+
+                <?php 
+                $terms = get_the_terms( get_the_ID(), 'aj_portfolios_cat');
+
+               foreach ($terms as $term) {
+                   echo $term->slug. ' ';
+               }
+
+                ?>
+
+
+
+                col-md-3 col-sm-4 col-xs-12">
+                
+                    <a href="<?php echo $full_image[0]; ?>" class="gallery-popup">
+                        <?php the_post_thumbnail(); ?>
+                    </a>
                 </div>
 
-                <!--Work Item-->
-                <div class="works-item brand design col-md-3 col-sm-4 col-xs-12">
-                    <a href="img/work/2.jpg" class="gallery-popup"><img src="<?php echo get_template_directory_uri(); ?>/img/work/2.jpg" alt="" /></a>
-                </div>
 
-                <!--Work Item-->
-                <div class="works-item development web col-md-3 col-sm-4 col-xs-12">
-                    <a href="img/work/3.jpg" class="gallery-popup"><img src="<?php echo get_template_directory_uri(); ?>/img/work/3.jpg" alt="" /></a>
-                </div>
 
-                <!--Work Item-->
-                <div class="works-item brand web col-md-3 col-sm-4 col-xs-12">
-                    <a href="img/work/4.jpg" class="gallery-popup"><img src="<?php echo get_template_directory_uri(); ?>/img/work/4.jpg" alt="" /></a>
-                </div>
-
-                <!--Work Item-->
-                <div class="works-item design brand col-md-6 col-sm-8 col-xs-12">
-                    <a href="img/work/5.jpg" class="gallery-popup"><img src="<?php echo get_template_directory_uri(); ?>/img/work/5.jpg" alt="" /></a>
-                </div>
-
-                <!--Work Item-->
-                <div class="works-item web design col-md-3 col-sm-4 col-xs-12">
-                    <a href="img/work/6.jpg" class="gallery-popup"><img src="<?php echo get_template_directory_uri(); ?>/img/work/6.jpg" alt="" /></a>
-                </div>
-
-                <!--Work Item-->
-                <div class="works-item brand development col-md-3 col-sm-4 col-xs-12">
-                    <a href="img/work/7.jpg" class="gallery-popup"><img src="<?php echo get_template_directory_uri(); ?>/img/work/7.jpg" alt="" /></a>
-                </div>
-
-                <!--Work Item-->
-                <div class="works-item design brand col-md-3 col-sm-4 col-xs-12">
-                    <a href="img/work/8.jpg" class="gallery-popup"><img src="<?php echo get_template_directory_uri(); ?>/img/work/8.jpg" alt="" /></a>
-                </div>
-
-                <!--Work Item-->
-                <div class="works-item design development col-md-3 col-sm-4 col-xs-12">
-                    <a href="img/work/9.jpg" class="gallery-popup"><img src="<?php echo get_template_directory_uri(); ?>/img/work/9.jpg" alt="" /></a>
-                </div>
+            <?php endwhile; ?>
+                
 
             </div>
             
