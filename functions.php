@@ -265,3 +265,53 @@ require_once('libs/metabox/custom-metabox.php');
 */
 
  require_once('libs/mce-button/mce-functions.php');
+
+
+
+/*vc_map(array(
+	'name'	=> 'Tajul',
+	'base'	=> 'samsu_via',
+	'description'	=> 'This is the first add-on',
+	'class'			=> 'samsu',
+	'icon'		=> 'https://cdn4.iconfinder.com/data/icons/creative-process-16/512/Know-32.png',
+	'params'	=> array(
+		array(
+			'param_name'	=> 'Samsu_tajul',
+			'type'			=> 'textfield',
+			'heading'		=> 'Title Here'
+		)
+	)
+
+));*/
+
+vc_map( array(
+	'name'		=> 'Service Title Section',
+	'base'		=> 'aj_about_title',
+	'description'	=> 'Service Title Section goes here',
+	'category'		=> 'Corlate',
+	'group'			=> 'samsu',	
+	'params'	=> array(
+		array(
+			'param_name'	=> 'title',
+			'type'			=> 'textfield',
+			'heading'		=> 'Service Title',
+			'value'			=> 'Who am I?',
+			'group'			=> 'Title'
+
+		),
+		array(
+			'param_name'	=> 'firstName',
+			'type'			=> 'textfield',
+			'heading'		=> 'First Name',
+			'value'			=> 'Tajul',
+			'group'			=> 'Proto Nam'
+		),
+		array(
+			'param_name'	=> 'lastName',
+			'type'			=> 'textfield',
+			'heading'		=> 'Last Name',
+			'value'			=> 'Islam',
+			'group'			=> 'Shesher Nam'
+		)
+	)
+) );

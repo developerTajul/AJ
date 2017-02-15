@@ -22,30 +22,7 @@ ob_start();
             
 
             
-            <!-- About Skills -->
-            <div class="col-md-5 col-xs-12 mb-45">
-                <div class="skills text-left">
-                    
-                    <!-- Single Progress -->
-                    <p class="progress-text">PHOTOSHOP</p>
-                    <div class="progress">
-                        <div class="progress-bar" data-percent="90%" style="width: 90%;"></div>
-                    </div>
-                   
-                    <!-- Single Progress -->
-                    <p class="progress-text">INDESIGN</p>
-                    <div class="progress">
-                        <div class="progress-bar" data-percent="95%" style="width: 95%;"></div>
-                    </div>
-                   
-                    <!-- Single Progress -->
-                    <p class="progress-text">ENGLISH</p>
-                    <div class="progress">
-                        <div class="progress-bar" data-percent="85%" style="width: 85%;"></div>
-                    </div>
-                    
-                </div>
-            </div>
+          
             
             <!-- Funfacts -->
             <div class="col-lg-10 col-lg-offset-1 col-md-12 col-md-offset-0 col-xs-12 mb-45">
@@ -151,6 +128,73 @@ ob_start();
                     <p><?php echo $note; ?></p>
                 </div>
             </div>
+
+
+<?php return ob_get_clean();
+}
+
+
+
+/**
+*
+* about skill
+*
+*/
+add_shortcode('aj_about_skill_wrapper', 'aj_about_skill_wrapper_fn');
+
+function aj_about_skill_wrapper_fn($atts, $content){
+extract( shortcode_atts(array(
+    'title'     => 'Hello!',
+    'progress'     => 'Hello!'
+
+
+), $atts));
+
+ob_start();
+?>
+
+            
+  <!-- About Skills -->
+            <div class="col-md-5 col-xs-12 mb-45">
+                <div class="skills text-left">
+                    
+
+                   <?php echo do_shortcode(); ?>
+                   
+                    
+                </div>
+            </div>
+
+
+<?php return ob_get_clean();
+}
+
+
+
+
+/**
+*
+* about single skill
+*
+*/
+add_shortcode('aj_about_single_skill', 'aj_about_single_skill_fn');
+
+function aj_about_single_skill_fn($atts, $content){
+extract( shortcode_atts(array(
+    'title'     => 'Photoshop!',
+    'progress_count'     => 90
+
+
+), $atts));
+
+ob_start();
+?>            
+
+<!-- Single Progress -->
+    <p class="progress-text"><?php echo $title; ?></p>
+    <div class="progress">
+        <div class="progress-bar" data-percent="<?php echo $progress_count; ?>%" style="width: <?php echo $progress_count; ?>%;"></div>
+    </div>
 
 
 <?php return ob_get_clean();
